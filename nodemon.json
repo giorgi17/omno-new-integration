@@ -1,6 +1,7 @@
 {
-    "watch": ["*"],
-    "ext": ".ts, .js",
-    "ignore": [],
-    "exec": "ts-node ./app.ts"
+    "watch": ["src", "tsconfig.json", ".env"],
+    "colours": true,
+    "ignore": ["./generated"],
+    "ext": "ts",
+    "exec": "ts-node -r tsconfig-paths/register ./src/index.ts"
 }
