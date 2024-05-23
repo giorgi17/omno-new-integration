@@ -65,3 +65,6 @@ build
 # Terragrunt
 **/.terragrunt-cache/**
 generated
+
+# Lambda
+**/cdk.out/
