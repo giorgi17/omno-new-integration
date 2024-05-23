@@ -2,6 +2,7 @@ import {
     processTransactionRequestBodyType,
     transactionResponseHookRequestBodyType,
 } from '@routes/transaction/types';
+import { matchSchemas } from '@utils/helpers';
 import { FastifyReply, FastifyRequest } from 'fastify';
 
 export const processTransaction = async (
@@ -10,14 +11,16 @@ export const processTransaction = async (
     }>,
     reply: FastifyReply
 ) => {
-    // Receiving all data from core needed for transaction processing
-    const PspSchemaData = request.body.schemaParams;
+    const headers = request.headers;
+
+    // Receiving and validating all data from core needed for transaction processing
+    const schemaData = matchSchemas(headers);
 
     // Do transaction processing and send pending status if there is no error
     // .....
 
     reply.status(200).send({
-        message: PspSchemaData
+        message: schemaData
             ? 'Transaction is pending'
             : 'schemaParams were not received!',
     });

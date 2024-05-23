@@ -1,3 +1,4 @@
+import { stripeSchema } from '@utils/schemas';
 import { FastifyReply, FastifyRequest } from 'fastify';
 
 export const getSchema = async (
@@ -6,15 +7,6 @@ export const getSchema = async (
 ) => {
     reply.status(200).send({
         message: 'PSP schema has been retrieved.',
-        data: [
-            {
-                name: 'clientId',
-                type: 'string',
-            },
-            {
-                name: 'clientSecret',
-                type: 'string',
-            },
-        ],
+        data: stripeSchema,
     });
 };
